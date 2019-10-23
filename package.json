@@ -35,11 +35,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "check:linting": "eslint --ext .ts,.js src",
-    "check:typing": "tsc",
+    "check:typing": "tsc --project tsconfig.json",
     "check": "yarn run check:lint && yarn run check:types",
-    "build:types": "tsc --project tsconfig.types.json",
-    "build:bundles": "rollup -c rollup.config.js",
-    "build": "yarn run build:types && yarn run build:bundles",
+    "build": "microbundle build --tsconfig tsconfig.bundle.json",
     "test": "jest",
     "prepublishOnly": "yarn run clean && yarn run check && yarn run test && yarn run build"
   },
