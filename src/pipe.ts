@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Observable } from "./Observable"
 
 type Function<T1, T2> = (observable: Observable<T1>) => Observable<T2>;

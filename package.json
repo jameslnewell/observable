@@ -36,7 +36,7 @@
     "clean": "rm -rf dist",
     "check:linting": "eslint --ext .ts,.js src",
     "check:typing": "tsc --project tsconfig.json",
-    "check": "yarn run check:lint && yarn run check:types",
+    "check": "yarn run check:linting && yarn run check:typing",
     "build": "microbundle build --tsconfig tsconfig.bundle.json",
     "test": "jest",
     "prepublishOnly": "yarn run clean && yarn run check && yarn run test && yarn run build"

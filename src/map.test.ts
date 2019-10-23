@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import {create, map} from '.';
 
-const delay = async (ms: number = 60) => new Promise(resolve => setTimeout(resolve, ms));
+const delay = async (ms = 60) => new Promise(resolve => setTimeout(resolve, ms));
 
 const fn = (value: string) => value.charCodeAt(0);
 
