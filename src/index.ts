@@ -5,3 +5,5 @@ export * from './create';
 export * from './map';
 export * from './pipe';
 export * from './isObservable';
+export * from './fromArray';
+export * from './fromError';

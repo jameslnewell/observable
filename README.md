@@ -33,6 +33,10 @@ subscription.unsubscribe();
 
 ## API
 
+### fromArray(array)
+
+### fromError(array)
+
 ### create(factory): Observable
 
 ### map(fn)(observable): Observable
