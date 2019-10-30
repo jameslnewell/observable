@@ -1,14 +1,16 @@
 import {Observer} from './Observer';
 import {Observable} from './Observable';
 
-type FactoryFunction<T, E = any> = (
+type FactoryFunction<T, E> = (
   subscriber: Observer<T, E>,
 ) => void | (() => void);
 
-export const create = <T>(factory: FactoryFunction<T>): Observable<T> => {
+export const create = <T, E = any>(
+  factory: FactoryFunction<T, E>,
+): Observable<T, E> => {
   return {
     subscribe: subscriber => {
-      let cancel: ReturnType<FactoryFunction<T>> = undefined;
+      let cancel: ReturnType<FactoryFunction<T, E>> = undefined;
       let finished = false;
       let cancelled = false;
       cancel = factory({

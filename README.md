@@ -13,7 +13,7 @@ yarn add @jameslnewell/observable
 ```js
 const {create, map, pipe} from '@jameslnewell/observable';
 
-const numbers = (ms: number = 1000) => create(subscriber => {
+const numbers = (ms = 1000) => create(subscriber => {
   let count = 0;
   const handle = setInterval(() => subscriber.next(count++), ms);
   return () => clearInterval(handle);
