@@ -1,6 +1,6 @@
 {
   "name": "@jameslnewell/observable",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A super simple and light-weight observable implementation.",
   "keywords": [
     "observable",
