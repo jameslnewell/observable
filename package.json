@@ -1,6 +1,6 @@
 {
   "name": "@jameslnewell/observable",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A super simple and light-weight observable implementation.",
   "keywords": [
     "observable",
@@ -15,6 +15,7 @@
   "module": "dist/index.mjs",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@jameslnewell/babel-preset": "^2.0.0",
