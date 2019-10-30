@@ -1,7 +1,6 @@
-
-export interface Observer<T> {
-  next: (data: T) => void; 
+export interface Observer<T, E = any> {
+  next: (data: T) => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  error: (error: any) => void;
+  error: (error: E) => void;
   complete: () => void;
 }

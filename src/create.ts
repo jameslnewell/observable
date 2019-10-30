@@ -1,16 +1,18 @@
-import { Observer } from "./Observer";
-import { Observable } from "./Observable";
+import {Observer} from './Observer';
+import {Observable} from './Observable';
 
-type FactoryFunction<T> = (subscriber: Observer<T>) => (void | (() => void));
+type FactoryFunction<T, E = any> = (
+  subscriber: Observer<T, E>,
+) => void | (() => void);
 
 export const create = <T>(factory: FactoryFunction<T>): Observable<T> => {
   return {
-    subscribe: (subscriber) => {
+    subscribe: subscriber => {
       let cancel: ReturnType<FactoryFunction<T>> = undefined;
       let finished = false;
       let cancelled = false;
       cancel = factory({
-        next: (data) => {
+        next: data => {
           if (finished) {
             return;
           }
@@ -18,7 +20,7 @@ export const create = <T>(factory: FactoryFunction<T>): Observable<T> => {
             subscriber.next(data);
           }
         },
-        error: (error) => {
+        error: error => {
           if (finished) {
             return;
           }
@@ -43,10 +45,10 @@ export const create = <T>(factory: FactoryFunction<T>): Observable<T> => {
           if (subscriber.complete) {
             subscriber.complete();
           }
-        }
+        },
       });
 
-      // handle the case where the factory is synchronous and it completes/errors before a cancel function is returned 
+      // handle the case where the factory is synchronous and it completes/errors before a cancel function is returned
       if (finished && !cancelled && cancel) {
         cancelled = true;
         cancel();
@@ -59,8 +61,8 @@ export const create = <T>(factory: FactoryFunction<T>): Observable<T> => {
             cancelled = true;
             cancel();
           }
-        }
+        },
       };
-    }
+    },
   };
-}
+};
