@@ -1,6 +1,6 @@
 {
   "name": "@jameslnewell/observable",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A super simple and light-weight observable implementation.",
   "keywords": [
     "observable",
@@ -12,7 +12,7 @@
   ],
   "source": "src/index.ts",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.esm.js",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
