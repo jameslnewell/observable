@@ -3,6 +3,7 @@ import {Observable} from './Observable';
 
 type FactoryFunction<T, E> = (observer: Observer<T, E>) => void | (() => void);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const create = <T, E = any>(
   factory: FactoryFunction<T, E>,
 ): Observable<T, E> => {

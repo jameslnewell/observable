@@ -1,6 +1,7 @@
 import {Observable} from './Observable';
 import {create} from './create';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const map = <T1, T2, E = any>(fn: (value: T1) => T2) => (
   observable: Observable<T1, E>,
 ): Observable<T2, E> => {
