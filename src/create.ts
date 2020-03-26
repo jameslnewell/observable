@@ -1,9 +1,7 @@
 import {Observer} from './Observer';
 import {Observable} from './Observable';
 
-type FactoryFunction<T, E> = (
-  subscriber: Observer<T, E>,
-) => void | (() => void);
+type FactoryFunction<T, E> = (observer: Observer<T, E>) => void | (() => void);
 
 export const create = <T, E = any>(
   factory: FactoryFunction<T, E>,
