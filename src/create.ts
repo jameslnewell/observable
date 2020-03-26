@@ -8,20 +8,20 @@ export const create = <T, E = any>(
   factory: FactoryFunction<T, E>,
 ): Observable<T, E> => {
   return {
-    subscribe: subscriber => {
+    subscribe: (subscriber) => {
       let cancel: ReturnType<FactoryFunction<T, E>> = undefined;
       let finished = false;
       let cancelled = false;
       cancel = factory({
-        next: data => {
+        next: (data) => {
           if (finished) {
             return;
           }
-          if (subscriber.next) {
+          if (subscriber && subscriber.next) {
             subscriber.next(data);
           }
         },
-        error: error => {
+        error: (error) => {
           if (finished) {
             return;
           }
@@ -30,7 +30,7 @@ export const create = <T, E = any>(
             cancelled = true;
             cancel();
           }
-          if (subscriber.error) {
+          if (subscriber && subscriber.error) {
             subscriber.error(error);
           }
         },
@@ -43,7 +43,7 @@ export const create = <T, E = any>(
             cancelled = true;
             cancel();
           }
-          if (subscriber.complete) {
+          if (subscriber && subscriber.complete) {
             subscriber.complete();
           }
         },
