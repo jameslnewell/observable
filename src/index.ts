@@ -7,3 +7,5 @@ export * from './pipe';
 export * from './isObservable';
 export * from './fromArray';
 export * from './fromError';
+export * from './firstValueFrom';
+export * from './lastValueFrom';
