@@ -48,3 +48,7 @@ subscription.unsubscribe();
 ### pipe(fn1, fn2, fn3)(Observable): Observable
 
 ### isObservable(value): boolean
+
+### firstValueFrom(observable: Observable<Value>): Promise<Value>
+
+### lastValueFrom(observable: Observable<Value>): Promise<Value>

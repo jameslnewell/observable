@@ -1,15 +1,16 @@
 import {Observer} from './Observer';
 import {Observable} from './Observable';
 
-type FactoryFunction<T, E> = (observer: Observer<T, E>) => void | (() => void);
+type FactoryFunction<Value = unknown, Error = unknown> = (
+  observer: Observer<Value, Error>,
+) => void | (() => void);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const create = <T, E = any>(
-  factory: FactoryFunction<T, E>,
-): Observable<T, E> => {
+export const create = <Value = unknown, Error = unknown>(
+  factory: FactoryFunction<Value, Error>,
+): Observable<Value, Error> => {
   return {
     subscribe: (subscriber) => {
-      let cancel: ReturnType<FactoryFunction<T, E>> = undefined;
+      let cancel: ReturnType<FactoryFunction<Value, Error>> = undefined;
       let finished = false;
       let cancelled = false;
       cancel = factory({

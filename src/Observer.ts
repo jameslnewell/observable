@@ -1,33 +1,28 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface Observer<T, E = any> {
-  next: (data: T) => void;
+export interface Observer<Value = unknown, Error = unknown> {
+  next: (data: Value) => void;
   complete: () => void;
-  error: (error: E) => void;
+  error: (error: Error) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface NextObserver<T, E = any> {
-  next: (data: T) => void;
+export interface NextObserver<Value = unknown, Error = unknown> {
+  next: (data: Value) => void;
   complete?: () => void;
-  error?: (error: E) => void;
+  error?: (error: Error) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface CompleteObserver<T, E = any> {
-  next?: (data: T) => void;
+export interface CompleteObserver<Value = unknown, Error = unknown> {
+  next?: (data: Value) => void;
   complete: () => void;
-  error?: (error: E) => void;
+  error?: (error: Error) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface ErrorObserver<T, E = any> {
-  next?: (data: T) => void;
+export interface ErrorObserver<Value = unknown, Error = unknown> {
+  next?: (data: Value) => void;
   complete?: () => void;
-  error: (error: E) => void;
+  error: (error: Error) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type PartialObserver<T, E = any> =
-  | NextObserver<T, E>
-  | CompleteObserver<T, E>
-  | ErrorObserver<T, E>;
+export type PartialObserver<Value = unknown, Error = unknown> =
+  | NextObserver<Value, Error>
+  | CompleteObserver<Value, Error>
+  | ErrorObserver<Value, Error>;

@@ -1,13 +1,18 @@
 import {Observable} from './Observable';
 import {create} from './create';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const map = <T1, T2, E = any>(fn: (value: T1) => T2) => (
-  observable: Observable<T1, E>,
-): Observable<T2, E> => {
-  return create(observer => {
+export const map = <
+  InputValue = unknown,
+  OutputValue = unknown,
+  Error = unknown
+>(
+  fn: (value: InputValue) => OutputValue,
+) => (
+  observable: Observable<InputValue, Error>,
+): Observable<OutputValue, Error> => {
+  return create((observer) => {
     const subscription = observable.subscribe({
-      next: value => observer.next(fn(value)),
+      next: (value) => observer.next(fn(value)),
       error: observer.error,
       complete: observer.complete,
     });

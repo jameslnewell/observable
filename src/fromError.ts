@@ -1,6 +1,6 @@
 import {create} from './create';
 import {Observable} from './Observable';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const fromError = <T, E = any>(error: E): Observable<T, E> =>
-  create(observer => observer.error(error));
+export const fromError = <Value = unknown, Error = unknown>(
+  error: Error,
+): Observable<Value, Error> => create((observer) => observer.error(error));
