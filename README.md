@@ -45,6 +45,8 @@ subscription.unsubscribe();
 
 ### map(fn)(observable): Observable
 
+### delay(ms)(observable): Observable
+
 ### pipe(fn1, fn2, fn3)(Observable): Observable
 
 ### isObservable(value): boolean
